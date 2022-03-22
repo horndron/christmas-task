@@ -1,5 +1,11 @@
 # christmas-task
 
+![image](https://user-images.githubusercontent.com/89828396/159538899-76bea086-6e58-4dcd-879d-67347a937d34.png)
+
+![image](https://user-images.githubusercontent.com/89828396/159539007-9adb73f1-052c-44d8-a3d7-42ea922b0645.png)
+
+![image](https://user-images.githubusercontent.com/89828396/159539241-de17fa8c-c38b-40fe-b042-be13ddabeafb.png)
+
 
 
 ## Part #1

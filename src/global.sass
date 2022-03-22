@@ -1,0 +1,898 @@
+@mixin d-flex
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  justify-content: space-between
+  
+* 
+  box-sizing: border-box
+  max-width: 100%
+  line-height: 1.3
+  letter-spacing: 1px
+  
+  
+body
+  min-height: 100vh
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  font-family: 'Neucha', cursive
+  background-color: #192F2D
+
+  main
+    section
+      display: none
+
+.front-page
+  background-image: url("./assets/main-bg.jpg")
+  background-repeat: no-repeat
+  background-size: cover
+
+  main
+    .start-game
+      display: block
+
+
+.toys-page
+
+  main
+    margin-top: 0
+    margin-bottom: auto
+    
+    .toys
+      display: block
+
+.container
+  width: 1500px
+  padding: 0 15px
+  margin: 0 auto
+
+  .hide
+    display: none
+
+
+.alert
+  position: fixed
+  top: 15px
+  right: 15px
+  padding: 15px
+  font-size: 20px
+  text-align: center
+  background-color: #0B9824
+  border-radius: 10px
+  animation: 1s linear 0s infinite pulse
+
+  p
+    margin: 0
+
+@keyframes pulse
+  50%
+    background-color: #a53232
+    box-shadow: 0 0 10px 0
+    
+
+.btn
+  padding: 8px 15px
+  background: radial-gradient(118.88% 606.86% at 0% 0%, rgba(36, 197, 219, 0.15) 0%, rgba(36, 197, 219, 0) 100%)
+  backdrop-filter: blur(11px)
+  border-radius: 30px
+  font-weight: 400
+  border: 1px solid #24C5DB
+  color: #fff
+  cursor: pointer
+  transition: 0.8s
+
+  &:hover,
+  &:focus
+    background-color: #24C5DB
+
+
+.header
+  background-color: rgb(18, 28, 30, 1)
+  padding-top: 5px
+  z-index: 15
+
+  .container
+    @include d-flex
+
+  .nav-bar
+    @include d-flex
+    align-items: stretch
+
+    a
+      position: relative
+      padding: 20px
+      color: #fff
+      text-transform: uppercase
+      text-decoration: none
+      transition: color 0.5s
+
+      &:hover
+        color: #278D9F
+
+      &::after
+        content: ''
+        position: absolute
+        width: 0
+        height: 3px
+        left: 15px
+        bottom: 12px
+        background-color: #278D9F
+        transition: width 0.5s
+
+      &:hover::after
+        width: calc(100% - 30px)
+
+    a.active
+
+      &::after
+        width: calc(100% - 30px)
+
+    .logo
+      min-width: 60px
+      background: url(./assets/svg/tree.svg) no-repeat
+      background-size: contain
+      background-position: center
+
+      &::after
+        display: none
+
+      img
+        height: 55px
+
+    .logo:hover
+      filter: invert(57%) sepia(100%) saturate(329%) hue-rotate(141deg) brightness(89%) contrast(90%)
+
+  .header-controll
+    @include d-flex
+
+    .search
+      position: relative
+      width: 225px
+      color: #fff
+      padding: 5px 12px
+      background-color: rgba(31, 112, 127, .25)
+      backdrop-filter: blur(11px)
+      border: 1px solid #24C5DB
+      border-radius: 30px
+      margin-right: 15px
+
+    input[type="search"]::-webkit-search-decoration,
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-results-button,
+    input[type="search"]::-webkit-search-results-decoration
+      color: #24C5DB
+      background-color: #24C5DB
+
+    .selected-toys
+      width: 48px
+      height: 60px
+      background-image: url(./assets/svg/ball-2.svg)
+      background-size: 48px 60px
+      background-position: left -8px
+      background-repeat: no-repeat
+      transition: .3s
+
+      .selected-toys__count
+        display: inline-block
+        min-width: 40px
+        height: 40px
+        margin-top: 10px
+        margin-left: 4px
+        border-radius: 50%
+        font-size: 15px
+        text-align: center
+        line-height: 40px
+        font-size: 18px
+        color: #fff
+        background-color: #278D9F
+
+
+.start-game
+  text-align: center
+
+  h1,
+  .start
+    width: 430px
+    padding: 50px 75px
+    background: radial-gradient(118.88% 606.86% at 0% 0%, rgba(36, 197, 219, 0.15) 0%, rgba(36, 197, 219, 0) 100%)
+    backdrop-filter: blur(11px)
+    border-radius: 30px
+    font-weight: 400
+    text-transform: uppercase
+    margin-left: auto
+    margin-right: auto
+    border: 2px solid #24C5DB
+    color: #fff
+
+  .start
+    width: auto
+    padding: 10px 50px
+    margin-top: 40px
+    cursor: pointer
+    transition: 0.8s
+    
+    &:hover,
+    &:focus
+      background-color: #24C5DB
+      transform: scale(1.02)
+
+
+.footer
+  color: #fff
+  padding: 5px 0
+  background-color: #192F2D
+  margin-top: 15px
+
+  .github img
+    margin-right: 5px
+
+  .github,
+  .container
+    @include d-flex
+
+    a
+      color: #fff
+      text-decoration: none
+
+
+.toys
+  color: #fff
+  margin: 25px auto
+
+  .flex
+    @include d-flex
+    align-items: start
+
+    .filters
+      width: 30%
+
+      .filters__reset
+        .btn
+          margin-top: 10px
+          margin-right: 10px
+
+    .toys-container.hidden
+      opacity: 0
+
+      .toys-container__item
+        transform: scale(0.01)
+
+    .toys-container
+      @include d-flex
+      align-items: start
+      justify-content: start
+      width: 70%
+      transition: opacity 0.3s
+      opacity: 1
+
+      .toys-container__item.selected
+        border-color: #24C5DB
+        background: radial-gradient(109.56% 109.56% at 0% -2.94%, rgba(255, 255, 255, 0.6) 0%, rgba(36, 197, 219, 0.6) 100%)
+
+      .toys-container__item
+        width: calc(25% - 20px)
+        background: radial-gradient(109.56% 109.56% at 0% -2.94%, rgba(255, 255, 255, 0.5) 0%, rgba(179, 246, 255, 0.5) 100%)
+        backdrop-filter: blur(4px)
+        border-radius: 10px
+        padding: 15px
+        margin-left: 20px
+        margin-bottom: 20px
+        overflow: hidden
+        border: 2px solid #192F2D
+        transition: 0.3s
+        cursor: pointer
+        transition: all .5s ease 0s
+
+        img
+          height: 115px
+          display: block
+          margin: 15px auto 20px
+
+        p
+          font-size: 14px
+          margin-top: 0
+          margin-bottom: 5px
+
+          &:last-child
+            margin-bottom: 0
+
+        .name
+          min-height: 52px
+          font-size: 20px
+
+
+@media (max-width: 1249px)
+  .toys
+    margin: 15px auto
+
+    .flex
+
+      .filters
+        width: 25%
+
+      .toys-container
+        width: 75%
+
+        .toys-container__item
+          width: calc(33.3% - 20px)
+
+@media (max-width: 911px)
+  .toys
+
+    .flex
+
+      .filters
+        width: 28%
+
+      .toys-container
+        width: 72%
+
+        .toys-container__item
+          width: calc(33.3% - 10px)
+          padding: 10px
+          margin-left: 10px
+          margin-bottom: 10px
+          
+          .name
+            min-height: 44px
+            font-size: 17px
+
+          img
+            height: 75px
+
+          p
+            font-size: 12px
+
+
+.tree-page
+
+  main
+    margin-top: 0
+    margin-bottom: auto
+    
+    .christmas-tree
+      display: block
+
+      .flex
+        @include d-flex
+        align-items: stretch
+
+        & > div
+          width: 19%
+
+        .christmas-tree__tree
+          position: relative
+          width: 58%
+
+        .christmas-tree__parametrs
+          margin-top: 15px
+
+          & > div
+            margin-bottom: 15px
+
+          .snow-sound
+
+            button
+              width: 36px
+              height: 36px
+              appearance: none
+              border: none
+              margin-right: 30px
+              transition: 0.5s
+              cursor: pointer
+
+              &.active
+                filter: invert(54%) sepia(96%) saturate(389%) hue-rotate(139deg) brightness(105%) contrast(83%)
+            
+            button:first-child
+              background: url(./assets/svg/audio.svg) no-repeat
+              background-size: 32px
+              background-position: center
+
+            button:nth-child(2)
+              background: url(./assets/svg/snow.svg) no-repeat
+              background-size: 32px
+              background-position: center
+
+          .label
+              width: 100%
+              margin-bottom: 15px
+              color: #fff
+
+          .property
+            position: relative
+            width: 45%
+            height: 0
+            padding-bottom: 30%
+            background-color: #679396
+            margin-right: 5%
+            margin-bottom: 5%
+            border: 2px solid #679396
+            border-radius: 10px
+            background-repeat: no-repeat
+            background-position: center
+            background-size: contain
+            cursor: pointer
+            transition: 0.5s
+
+            &:hover
+              border-color: #24C5DB
+
+          .property.active
+            border-color: #24C5DB
+            background-color: rgba(36, 197, 219, 0.5)
+            box-shadow: 0 0 8px 2px rgba(36, 197, 219, 0.5)
+
+          .tree-variants
+            @include d-flex
+            align-items: start
+
+          .background
+            @include d-flex
+            align-items: start
+            justify-content: start
+
+            .property
+              position: relative
+              width: 21.5%
+              height: 0
+              padding-bottom: 17%
+              margin-right: 3%
+              margin-bottom: 3%
+              background-size: cover
+              border-color: transparent
+              filter: saturate(0.5) grayscale(0.5)
+
+              &:hover
+                border-color: #24C5DB
+                filter: saturate(1.2) grayscale(0)
+
+            .property.active
+              border-color: #24C5DB
+              filter: saturate(1.2) grayscale(0)
+              box-shadow: 0 0 5px 2px rgba(36, 197, 219, 0.5)
+
+        .garland-variants
+          @include d-flex
+
+          .garland__on-off-label
+            display: flex
+            justify-content: center
+            align-items: center
+            margin-left: 0
+            margin-bottom: 10px
+            margin-right: auto
+
+            input
+              display: none
+
+            .switch
+              position: relative
+              display: inline-block
+              width: 48px
+              height: 24px
+              background-color: #fff
+              border-radius: 1000px
+              transition: .4s
+              cursor: pointer
+
+
+              &:before
+                position: absolute
+                content: ""
+                height: 18px
+                width: 18px
+                left: 3px
+                bottom: 3px
+                background-color: #24C5DB
+                border-radius: 50%
+                transition: .4s
+
+          input:checked + .switch
+            background-color: #24C5DB
+
+            &::before
+              background-color: #fff
+              transform: translateX(23px)
+
+          .garland__btns
+
+            button
+              width: 24px
+              height: 24px
+              border-radius: 50%
+              margin-right: 5px
+              margin-bottom: 10px
+              transition: 0.5s
+              cursor: pointer
+
+            button[data-value="multicolor"]
+              background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8)
+
+            button[data-value="red"]
+              background: #f70094
+
+            button[data-value="blue"]
+              background: blue
+
+            button[data-value="yellow"]
+              background: yellow
+
+            button[data-value="green"]
+              background: #00f7a5
+
+            .garland__btn.active
+              box-shadow: 0 0 8px 2px rgb(36, 197, 219, 0.5)
+              border-color: #24C5DB
+              transform: scale(1.1)
+
+        .christmas-tree__tree
+          min-height: calc(100% - 129px)
+          display: flex
+          align-items: center
+          justify-content: center
+          background-image: url("./assets/bg/1.jpg")
+          background-size: cover
+          background-repeat: no-repeat
+          background-position: center
+
+          .tree-image
+            max-height: 90%
+
+        .christmas-tree__right-side
+          width: 23%
+          padding: 0 0.5%
+
+          .right-side__toys
+            @include d-flex
+
+            .toys__selected
+              @include d-flex
+              justify-content: center
+              width: 75px
+              height: 75px
+              background-color: #679396
+              margin-left: 5px
+              margin-bottom: 7px
+              border-radius: 10px
+
+              .toys__selected-count
+                align-self: flex-end
+                color: #fff
+                line-height: normal
+                padding: 2px 6px 1px 7px
+                margin-left: auto
+                margin-right: -2px
+                margin-bottom: -2px
+                background-color: #24C5DB
+                border-radius: 50%
+                z-index: 1
+
+.toys__image
+  position: absolute
+  display: block
+  width: 60px
+  height: 60px
+  object-fit: contain
+  cursor: move              
+                
+@media (max-width: 1249px)
+  .tree-page
+    main
+      .christmas-tree
+        .flex
+          .christmas-tree__parametrs
+            margin-top: 5px
+
+            & > div
+              margin-bottom: 10px
+
+            .property
+              padding-bottom: 25%
+
+          .christmas-tree__right-side
+
+            .right-side__toys
+
+              .toys__selected
+                width: 60px
+                height: 60px
+
+          .toys__image
+            width: 50px
+            height: 50px
+
+
+.snow
+  position: absolute
+  height: calc(100vh - 140px)
+  top: -120px
+  left: -2.5%
+  right: -2.5%
+  overflow: hidden
+  pointer-events: none
+  max-width: 100vw
+  z-index: 10
+  
+  i, i:after, i:before
+    background: white
+    pointer-events: none
+
+  i
+    position: relative
+    display: inline-block
+    animation: snowflakes 3s linear 2s 20
+
+    &::after, &::before
+      content: ''
+      position: absolute
+      width: 100%
+      height: 100%
+      top: 0
+      left: 0
+      transform: rotate(120deg)
+
+    &:before
+      transform: rotate(240deg)
+
+  i:nth-child(3n)
+    width: 16px
+    height: 4px
+    animation-duration: 4s
+    animation-iteration-count: 30
+    transform-origin: right -45px
+
+  i:nth-child(3n+1)
+    width: 24px
+    height: 6px
+    animation-duration: 6s
+    animation-iteration-count: 45
+    transform-origin: right -30px
+
+  i:nth-child(3n+2)
+    width: 32px
+    height: 8px
+    animation-duration: 8s
+    animation-iteration-count: 60
+    transform-origin: right -15px
+
+  i:nth-child(7n)
+    opacity: 0.3
+    animation-delay: 0s
+    animation-timing-function: ease-in
+
+  i:nth-child(7n+1)
+    opacity: 0.4
+    animation-delay: 1s
+    animation-timing-function: ease-in
+
+  i:nth-child(7n+2)
+    opacity: 0.5
+    animation-delay: 1.5s
+    animation-timing-function: ease-in
+
+  i:nth-child(7n+3)
+    opacity: 0.6
+    animation-delay: 2s
+    animation-timing-function: ease-in
+
+  i:nth-child(7n+4)
+    opacity: 0.7
+    animation-delay: 2.5s
+    animation-timing-function: ease-in
+
+  i:nth-child(7n+5)
+    opacity: 0.8
+    animation-delay: 3s
+    animation-timing-function: ease-in
+
+  i:nth-child(7n+6)
+    opacity: 0.9
+    animation-delay: 3.5s
+    animation-timing-function: ease-in
+ 
+
+
+@keyframes snowflakes
+  0% 
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.6)
+
+  100% 
+    transform: translate3d(15px, 1200px, 0px) rotate(360deg) scale(0.6)
+
+
+#garland
+  position: absolute
+  left: 50%
+  transform: translate(-50%)
+  pointer-events: none
+  z-index: 9
+
+  .lightrope
+    width: 100%
+    text-align: center
+    white-space: nowrap
+    overflow: hidden
+    z-index: 1
+    padding: 0
+    margin: 15px 0 52px
+    pointer-events: none
+    transform: rotate(13deg)
+    pointer-events: none
+
+    li
+      position: relative
+      animation-fill-mode: both
+      animation-iteration-count: infinite
+      list-style: none
+      margin: 0
+      padding: 0
+      display: block
+      width: 12px
+      height: 18px
+      border-radius: 50%
+      margin: 15px
+      display: inline-block
+      background: #00f7a5
+      box-shadow: 0px 4px 20px 2px #00f7a5
+      animation-name: flash-1
+      animation-duration: 2s
+      pointer-events: none
+
+      &::before
+        content: ""
+        position: absolute
+        background: #222
+        width: 10px
+        height: 9.33333px
+        border-radius: 3px
+        top: -4px
+        left: 1px
+        pointer-events: none
+
+      &::after
+        content: ""
+        top: -14px
+        left: 9px
+        position: absolute
+        width: 52px
+        height: 18px
+        border-bottom: solid #222 2px
+        border-radius: 50%
+        pointer-events: none
+
+      &:last-child:after
+        content: none
+
+    li:nth-child(4n+1)
+      background: blue
+      box-shadow: 0px 4px 24px 3px rgba(0, 0, 255, 0.5)
+      animation-name: flash-2
+      animation-duration: 0.4s
+
+    li:nth-child(4n+2)
+      background: blue
+      box-shadow: 0px 4px 24px 3px rgba(0, 0, 255, 0.5)
+      animation-name: flash-yellow
+      animation-duration: 0.4s
+
+    li:nth-child(4n+3) 
+      background: #f70094
+      box-shadow: 0px 4px 24px 3px #f70094
+      animation-name: flash-3
+      animation-duration: 1.1s
+
+    li:nth-child(odd)
+      animation-duration: 1.8s
+
+    li:nth-child(3n+1)
+      animation-duration: 1.4s
+
+    li:nth-child(4n+2)
+      animation-duration: 1.6s
+
+  .lightrope:nth-child(2n)
+
+    li:nth-child(4n)
+      animation-name: flash-2
+
+    li:nth-child(4n+1)
+      animation-name: flash-yellow
+
+    li:nth-child(4n+2)
+      animation-name: flash-3
+
+    li:nth-child(4n+3) 
+      animation-name: flash-1
+
+
+#garland.red
+
+  .lightrope
+
+    li
+      animation-name: flash-3 !important
+      animation-duration: 1.5s
+
+#garland.blue
+
+  .lightrope
+
+    li
+      animation-name: flash-2 !important
+      animation-duration: 1.5s
+
+#garland.yellow
+
+  .lightrope
+
+    li
+      animation-name: flash-yellow !important
+      animation-duration: 1.5s
+
+#garland.green
+
+  .lightrope
+
+    li
+      animation-name: flash-1 !important
+      animation-duration: 1.5s
+
+
+
+
+
+@keyframes flash-1
+  0%
+    background: #00f7a5
+    box-shadow: 0px 4px 24px 3px #00f7a5
+
+  50%
+    background: rgba(0, 247, 165, 0.4)
+    box-shadow: 0px 4px 24px 3px rgba(0, 247, 165, 0.2)
+
+  100%
+    background: #00f7a5
+    box-shadow: 0px 4px 24px 3px #00f7a5
+
+@keyframes flash-2
+  0%
+    background: blue
+    box-shadow: 0px 4px 24px 3px blue
+
+  50%
+    background: rgba(0, 0, 255, 0.4)
+    box-shadow: 0px 4px 24px 3px rgba(0, 0, 255, 0.2)
+
+  100%
+    background: blue
+    box-shadow: 0px 4px 24px 3px blue
+
+
+@keyframes flash-3
+  0%
+    background: #f70094
+    box-shadow: 0px 4px 24px 3px #f70094
+
+  50%
+    background: rgba(247, 0, 148, 0.4)
+    box-shadow: 0px 4px 24px 3px rgba(247, 0, 148, 0.2)
+
+  100%
+    background: #f70094
+    box-shadow: 0px 4px 24px 3px #f70094
+
+@keyframes flash-yellow
+  0%
+    background: yellow
+    box-shadow: 0px 4px 24px 3px yellow
+
+  50%
+    background: rgba(255, 255, 0, 0.4)
+    box-shadow: 0px 4px 24px 3px rgba(255, 255, 0, 0.2)
+
+  100%
+    background: yellow
+    box-shadow: 0px 4px 24px 3px yellow
+    

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <title>christmas</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet">
+      <link rel="icon" type="image/ico" href="./assets/favicon.ico">
+      <link rel="stylesheet" href="./normalize.css">
+  </head>
+  <body class="front-page">
+    <header class="header">
+      <div class="container">
+        <nav class="nav-bar">
+          <a href="#" class="logo nav-bar__link" data-target="front-page"></a>
+          <a href="#toys" class="nav-bar__link" data-target="toys-page">Игрушки</a>
+          <a href="#tree" class="nav-bar__link" data-target="tree-page">Ёлка</a>
+        </nav>
+        <div class="header-controll">
+          <input type="search" class="search" autocomplete="off" placeholder="Поиск по названию">
+          <div class="selected-toys">
+            <span class="selected-toys__count">0</span>
+          </div>
+        </div>
+        
+      </div>
+    </header>
+
+    <main class="container main-content">
+      <section class="start-game home">
+        <h1>Помогите бабушке нарядить елку</h1>
+        <button class="start btn" id="start">Начать</button>
+      </section>
+      
+      <section class="toys">
+        <div class="flex">
+          <div class="filters">
+
+            <div class="filters__sort">
+              <div class="label">Сортировать</div>
+              <select name="sort" id="sort">
+                <option value="name-asc">По названию ↓</option>
+                <option value="name-desc">По названию ↑</option>
+                <option value="count-asc">По количеству ↓</option>
+                <option value="count-desc">По количеству ↑</option>
+                <option value="year-asc">По году приобретения ↓</option>
+                <option value="year-desc">По году приобретения ↑</option>
+              </select>
+            </div>
+
+            <div class="filters__form">
+              <div class="label">Форма</div>
+              <button class="ball" data-filter="шар"></button>
+              <button class="bell" data-filter="колокольчик"></button>
+              <button class="cone" data-filter="шишка"></button>
+              <button class="snowflake" data-filter="снежинка"></button>
+              <button class="figure" data-filter="фигурка"></button>
+            </div>
+
+            <div class="filters__count">
+              <div class="label">Количество экземпляров</div>
+              <div class="slider count-slider" id="count-slider"></div>
+            </div>
+
+            <div class="filters__year">
+              <div class="label">Год приобретения</div>
+              <div class="slider year-slider" id="year-slider"></div>
+            </div>
+
+            <div class="filters__color">
+              <div class="label">Цвет</div>
+              <button class="white" data-filter="белый"></button>
+              <button class="yellow" data-filter="желтый"></button>
+              <button class="red" data-filter="красный"></button>
+              <button class="blue" data-filter="синий"></button>
+              <button class="green" data-filter="зелёный"></button>
+            </div>
+
+            <div class="filters__size">
+              <div class="label">Размер</div>
+              <div class="form-group">
+                <input type="checkbox" class="size-input" id="large" data-name="большой">
+                <label for="large" class="size-input-label">
+                  <span class="checkbox"></span><span>Большой</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <input type="checkbox" class="favorite-input" id="medium" data-name="средний">
+                <label for="medium" class="size-input-label">
+                  <span class="checkbox"></span><span>Средний</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <input type="checkbox" class="size-input" id="small" data-name="малый">
+                <label for="small" class="size-input-label">
+                  <span class="checkbox"></span><span>Маленький</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="filters__favorite">
+              <div class="form-group">
+                <input type="checkbox" class="favorite-input" id="favorite" data-name="Любимая">
+                <label for="favorite" class="favorite-input-label">
+                  <span class="checkbox"></span><span>Только любимые</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="filters__reset">
+              <button class="btn" id="reset-filters">Сбросить фильтры</button>
+              <button class="btn" id="reset-all">Сбросить все данные</button>
+            </div>
+          </div>
+          
+          <div class="toys-container"></div>
+        </div>
+      </section>
+
+      <section class="christmas-tree">
+        <div class="flex">
+          <div class="christmas-tree__parametrs">
+            <div class="snow-sound">
+              <button data-value="sound"></button>
+              <button data-value="snow"></button>
+            </div>
+            <div class="tree-variants">
+              <div class="label">Выберите  Ёлку</div>
+            </div>
+            <div class="background">
+              <div class="label">Выберите фон</div>
+            </div>
+            <div class="garland-variants">
+              <div class="label">Гирлянда</div>
+              <div class="garland__btns">
+                <button class="garland__btn" data-value="multicolor"></button>
+                <button class="garland__btn" data-value="red"></button>
+                <button class="garland__btn" data-value="blue"></button>
+                <button class="garland__btn" data-value="yellow"></button>
+                <button class="garland__btn" data-value="green"></button>
+              </div>
+              <label class="garland__on-off-label" for="garland__on-off">
+                <input type="checkbox" name="garland" id="garland__on-off">
+                <div class="switch"></div>
+              </label>
+            </div>
+            <div class="reset">
+              <button class="btn" id="reset-tree-property" data-prop="reset">Сбросить настройки</button>
+            </div>
+          </div>
+
+          <div class="christmas-tree__tree">
+            <div class="snow hide" id="snow"></div>
+            <div id="garland"></div>
+            <map name="tree-map">
+              <area coords="365,699,189,706,113,683,31,608,2,555,2,539,18,437,73,351,106,224,161,134,243,-1,306,75,353,144,399,221,424,359,452,459,496,550,444,664" shape="poly">
+            </map>
+            <img class="tree-image" src="./assets/tree/1.png" alt="tree" usemap="#tree-map">
+          </div>
+          <div class="christmas-tree__right-side">
+            <div class="right-side__toys"></div>
+          </div>
+          
+        </div>
+      </section>
+
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <a class="footer__item" href="https://rs.school/js/">
+            <img src="./assets/rs_school_js.svg" width="85" height="32" alt="rs school js">
+        </a>
+        <p class="footer__item">2021 Andrey Filippov</p>
+        <a class="footer__item github" href="https://github.com/horndron">
+            <img src="./assets/github.svg" alt="github">
+            <span>@horndron</span>
+        </a> 
+      </div>
+    </footer>
+  </body>
+</html>
